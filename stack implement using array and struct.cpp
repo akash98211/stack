@@ -6,34 +6,34 @@ typedef struct stack
     int capacity;
     int top;
     int *arr;
-}stack;
+}stacks;
 
-stack* intializestack(int capacity)
+stacks* intializestack(int capacity)
 {
-    stack *st=(stack*)malloc(sizeof(stack));
+    stacks *st=(stacks*)malloc(sizeof(stacks));
     st->capacity=capacity;
     st->top=-1;
     st->arr=(int*)malloc(sizeof(int)*capacity);
     return st;
 }
 
-int size(stack *st)
+int size(stacks *st)
 {
     return st->top+1;
 }
 
-int isEmpty(stack *st)
+int isEmpty(stacks *st)
 {
     return(st->top==-1);
 }
 
-int isFull(stack *st)
+int isFull(stacks *st)
 {
     return st->top+1==st->capacity;
 }
 
 
-void push(stack *st,int data)
+void push(stacks *st,int data)
 {
     if(isFull(st))
     {cout<<"overflow\n";
@@ -44,7 +44,7 @@ void push(stack *st,int data)
     st->arr[st->top]=data;
 }
 
-int peek(stack *st)
+int peek(stacks *st)
 {
     if(isEmpty(st))
     {cout<<"stack is empty\n";
@@ -54,7 +54,7 @@ int peek(stack *st)
     return st->arr[st->top];
 }
 
-int pop(stack *st)
+int pop(stacks *st)
 {
     if(isEmpty(st))
     {
@@ -70,7 +70,7 @@ int pop(stack *st)
 int main(){
     int capacity,n;
     cin>>capacity>>n;
-    stack *st=intializestack(capacity);
+    stacks *st=intializestack(capacity);
     
     for (int i = 0; i < n; i++) {
         int ele;cin>>ele;
@@ -87,7 +87,7 @@ int main(){
     cout<<"stack is not empty\n";
     
     for (int i = 0; i < n; i++) {
-        cout<<pop(st)<<" ";
+        cout<<pop(st)<<" \n";
     }
     return 0;
 }
